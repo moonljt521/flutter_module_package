@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-gu/values-gu.xml",
+            "map": [
+                {
+                    "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/values-gu/values-gu.xml",
+            "map": [
+                {
+                    "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

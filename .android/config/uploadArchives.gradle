@@ -1,0 +1,65 @@
+apply plugin: 'maven'
+
+if (!hasProperty('sonatypePackaging')) {
+    throw new RuntimeException('you must set sonatypePackaging in gradle.properties !!! like [jar,ajar,aar]')
+}
+
+if (!hasProperty('sonatypeGroupId')) {
+    throw new RuntimeException('you must set sonatypeGroupId in gradle.properties !!! like [com.xxx.xxx]')
+}
+
+if (!hasProperty('sonatypeArtifactId')) {
+    throw new RuntimeException('you must set sonatypeArtifactId in gradle.properties !!! like [project-name]')
+}
+
+if (!hasProperty('sonatypeVersion')) {
+    throw new RuntimeException('you must set sonatypeVersion in gradle.properties !!! like [1.0.0]')
+}
+if (sonatypePackaging == 'ajar') {
+    sonatypePackaging='jar'
+}
+if (!hasProperty('sonatypeRepo')) {
+    project.ext.sonatypeRepo = 'http://maven.17zuoye.net'
+    println "no [sonatypeRepo] found in gradle.properties , use default : $sonatypeRepo"
+}
+if (upSnapshot == 'true') {
+    sonatypeRepo += '/nexus/content/repositories/snapshots/'
+    sonatypeVersion = "${sonatypeVersion}-SNAPSHOT"
+} else {
+    sonatypeRepo += '/nexus/content/repositories/releases/'
+}
+if (!hasProperty('sonatypeUsername')) {
+    project.ext.sonatypeUsername = 'admin'
+    println "no [sonatypeUsername] found in gradle.properties , use default : $sonatypeUsername"
+}
+if (!hasProperty('sonatypePassword')) {
+    project.ext.sonatypePassword = 'admin123'
+    println "no [sonatypePassword] found in gradle.properties , use default : $sonatypePassword"
+}
+
+println '''
+sonatype repository url = ''' + sonatypeRepo + '''
+sonatype groupId = ''' + sonatypeGroupId + '''
+sonatype artifactId = ''' + sonatypeArtifactId + '''
+sonatype version = ''' + sonatypeVersion + '''
+sonatype packaging = ''' + sonatypePackaging + '''
+'''
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: sonatypeRepo) {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+            pom.project {
+                name project.name
+                packaging sonatypePackaging
+                description project.name
+                url ''
+                groupId sonatypeGroupId
+                artifactId sonatypeArtifactId
+                version sonatypeVersion
+            }
+        }
+    }
+}

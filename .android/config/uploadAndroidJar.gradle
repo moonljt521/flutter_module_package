@@ -1,0 +1,20 @@
+if (project.plugins.hasPlugin('com.android.library')) {
+    android.libraryVariants.all { variant ->
+        if (!variant.buildType.isDebuggable()) {
+            def name = variant.buildType.name
+            def packageJar = project.tasks.create "jar${name.capitalize()}", Jar
+            packageJar.dependsOn variant.javaCompile
+            packageJar.from variant.javaCompile.destinationDir
+            if (android.publishNonDefault) {
+                packageJar.classifier = name
+            }
+
+            artifacts.add('archives', packageJar);
+            configurations.archives.artifacts.removeAll {
+                it.type.is "aar"
+            }
+        }
+    }
+    println 'uploadArchives: android jar'
+    apply from: '../config/uploadArchives.gradle'
+}

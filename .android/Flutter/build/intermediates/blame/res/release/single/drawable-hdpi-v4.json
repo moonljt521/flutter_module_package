@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/moon/Documents/flutter_workspace/yq_flutter/.android/Flutter/build/intermediates/res/merged/release/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/moon/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a4d116e7da23b5d89e30ddd1cc3a24ea/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    }
+]
