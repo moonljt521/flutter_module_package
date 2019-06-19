@@ -13,12 +13,23 @@ rootDir=${rootFlutter%/*}
 isPlugin=false
 
 # targetSDK 设置为 26
+
+echo "扫描 app/build.gradle 中 targetSDK "
 if [ `grep -c 'targetSdkVersion 26' .android/app/build.gradle` -eq '1' ]; then
      echo "targetSDK 已经是26 ，不需要修改"
 else
      echo "targetSDK 需要修改为 26 "
      sed -i '' 's/targetSdkVersion 28/targetSdkVersion 26/g' .android/app/build.gradle
 fi
+
+echo "扫描 Flutter/build.gradle 中 targetSDK "
+if [ `grep -c 'targetSdkVersion 26' .android/Flutter/build.gradle` -eq '1' ]; then
+     echo "targetSDK 已经是26 ，不需要修改"
+else
+     echo "targetSDK 需要修改为 26 "
+     sed -i '' 's/targetSdkVersion 28/targetSdkVersion 26/g' .android/Flutter/build.gradle
+fi
+
 
 # 版本号 + 1
 cd ${projectDir}
