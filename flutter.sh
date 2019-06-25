@@ -190,7 +190,7 @@ addFatAArConfig
 
 # step 4.1  build products
 echo '编译出四个中间产物 ... '
-flutter build aot --suppress-analytics --quiet --target lib/main.dart --target-platform android-arm --output-dir build/app/intermediates/flutter/release  --release
+flutter build aot --suppress-analytics --quiet --target lib/main.dart --target-platform android-arm --output-dir build/app/intermediates/flutter/release  --release --extra-gen-snapshot-options=--print-snapshot-sizes
 if [ $? -eq 0 ]; then
     echo '编译中间产物 succeed !!!'
 else
