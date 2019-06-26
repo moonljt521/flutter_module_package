@@ -10,7 +10,7 @@ rootDir=${rootFlutter%/*}
 # 获取
 
 # 假如没有引用三方的flutter Plugin 设置false 即可 *************************
-isPlugin=false
+isPlugin=true
 
 # targetSDK 设置为 26
 
@@ -134,17 +134,17 @@ ${rootFlutter} clean
 
 
 # step2 copy so
-#echo 'copy so'
-#cd ${rootDir}/cache/artifacts/engine
-#for arch in android-arm android-arm-profile android-arm-release ; do
-#    pushd $arch
-#    cp flutter.jar flutter-armeabi-v7a.jar #备份
-#    unzip flutter.jar lib/armeabi-v7a/libflutter.so
-#    mv lib/armeabi-v7a lib/armeabi
-#    zip -d flutter.jar lib/armeabi-v7a/libflutter.so
-#    zip flutter.jar lib/armeabi/libflutter.so
-#    popd
-#done
+echo 'copy so'
+cd ${rootDir}/cache/artifacts/engine
+for arch in android-arm android-arm-profile android-arm-release ; do
+    pushd $arch
+    cp flutter.jar flutter-armeabi-v7a.jar #备份
+    unzip flutter.jar lib/armeabi-v7a/libflutter.so
+    mv lib/armeabi-v7a lib/armeabi
+    zip -d flutter.jar lib/armeabi-v7a/libflutter.so
+    zip flutter.jar lib/armeabi/libflutter.so
+    popd
+done
 
 # step 3 package get
 echo 'packages get'
