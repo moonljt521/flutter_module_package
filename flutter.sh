@@ -30,27 +30,34 @@ else
      sed -i '' 's/targetSdkVersion 28/targetSdkVersion 26/g' .android/Flutter/build.gradle
 fi
 
+flutterAArVersion="0"
 
-# 版本号 + 1
-cd ${projectDir}
-v=`grep sonatypeVersion bak/gradle.properties|cut -d'=' -f2`
-echo 旧版本号$v
-v1=`echo | awk '{split("'$v'",array,"."); print array[1]}'`
-v2=`echo | awk '{split("'$v'",array,"."); print array[2]}'`
-v3=`echo | awk '{split("'$v'",array,"."); print array[3]}'`
-v4=`echo | awk '{split("'$v'",array,"."); print array[4]}'`
-y=`expr $v4 + 1`
+# 更新版本号 测试时候使用 快照不必更新版本号，每次覆盖即可
+function updateAArVsersion(){
+      # 版本号 + 1
+    cd ${projectDir}
+    v=`grep sonatypeVersion bak/gradle.properties|cut -d'=' -f2`
+    echo 旧版本号$v
+    v1=`echo | awk '{split("'$v'",array,"."); print array[1]}'`
+    v2=`echo | awk '{split("'$v'",array,"."); print array[2]}'`
+    v3=`echo | awk '{split("'$v'",array,"."); print array[3]}'`
+    v4=`echo | awk '{split("'$v'",array,"."); print array[4]}'`
+    y=`expr $v4 + 1`
 
-vv=$v1"."$v2"."$v3"."$y
-echo 新版本号$vv
-# 更新配置文件
-sed -i '' 's/sonatypeVersion='$v'/sonatypeVersion='$vv'/g' bak/gradle.properties
-if [ $? -eq 0 ]; then
-    echo ''
-else
-    echo '更新版本号失败...'
-    exit
-fi
+    vv=$v1"."$v2"."$v3"."$y
+    echo 新版本号$vv
+    flutterAArVersion=$vv
+    # 更新配置文件
+    sed -i '' 's/sonatypeVersion='$v'/sonatypeVersion='$vv'/g' bak/gradle.properties
+    if [ $? -eq 0 ]; then
+        echo ''
+    else
+        echo '更新版本号失败...'
+        exit
+    fi
+}
+
+updateAArVsersion
 
 # 删除 fat-aar 引用
 function delFatAarConfig() {
@@ -249,5 +256,5 @@ rm -rf lib
 delFatAarConfig
 
 echo '<<<<<<<<<<<<<<<<<<<<<<<<<< 结束 >>>>>>>>>>>>>>>>>>>>>>>>>'
-echo '打包成功 : yqx-flutter.aar...................！ '
+echo '打包成功 : yqx-flutter.aar.............版本号为：'$flutterAArVersion
 exit
