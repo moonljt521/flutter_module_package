@@ -103,11 +103,11 @@ function addFatAArConfig() {
         fi
 
         if [ `grep -c 'com.kezong:fat-aar' .android/build.gradle` -eq '1' ]; then
-            echo "com.kezong:fat-aar:1.0.3 已存在 ！！！"
+            echo "com.kezong:fat-aar:1.2.8 已存在 ！！！"
         else
-            echo "com.kezong:fat-aar:1.0.3 不存在，去添加"
+            echo "com.kezong:fat-aar:1.2.8 不存在，去添加"
             sed -i '' '10 a\
-            classpath "com.kezong:fat-aar:1.0.3"
+            classpath "com.kezong:fat-aar:1.2.8"
             ' .android/build.gradle
         fi
 
@@ -194,6 +194,7 @@ fi
 # 在 settings.gradle 中 插入 ， 注意 sed 命令换行 在mac下 是 \'$'\n
 
 addFatAArConfig
+
 
 # step 4.1  build products
 echo '编译出四个中间产物 ... '
