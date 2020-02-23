@@ -178,7 +178,6 @@ fi
 
 # step 4.2 1.7.8开始 产物被集成到了 so
 #echo '复制中间产物到项目目录下 ... '
-#mkdir ${projectDir}/.android/Flutter/src/main/assets
 #
 #cp build/app/intermediates/flutter/release/isolate_snapshot_data ${projectDir}/.android/Flutter/src/main/assets/isolate_snapshot_data
 #cp build/app/intermediates/flutter/release/isolate_snapshot_instr ${projectDir}/.android/Flutter/src/main/assets/isolate_snapshot_instr
@@ -187,6 +186,8 @@ fi
 
 # step 5.1 build assets
 echo '编译出assets资源文件文件 ...'
+mkdir ${projectDir}/.android/Flutter/src/main/assets
+
 flutter build bundle --suppress-analytics --target lib/main.dart --target-platform android-arm --precompiled --asset-dir  build/app/intermediates/flutter/release/flutter_assets --release
 if [ $? -eq 0 ]; then
     echo '编译出assets资源文件文件 succeed !!!'
